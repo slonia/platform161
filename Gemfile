@@ -45,3 +45,22 @@ group :development do
   gem 'spring'
 end
 
+
+gem 'bootstrap-sass'
+gem 'devise'
+gem 'mysql2', '~> 0.3.18'
+gem 'simple_form'
+gem 'slim-rails'
+
+group :development do
+  gem 'haml2slim'
+  gem 'html2haml'
+  gem 'rails_apps_pages'
+  gem 'rails_layout'
+end
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-rescue'
+end
+
