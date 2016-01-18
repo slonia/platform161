@@ -15,7 +15,7 @@ development:
   database: platform161_development
   pool: 5
   username: root
-  password:
+  password: sample
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test:
   database: platform161_test
   pool: 5
   username: root
-  password:
+  password: sample
   host: localhost
 
 production:
@@ -38,5 +38,5 @@ production:
   database: platform161_production
   pool: 5
   username: root
-  password:
+  password: sample
   host: localhost
