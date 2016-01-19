@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'sessions#new'
+  resources :reports do
+    get :pdf_report, on: :member
+  end
+  root 'reports#index'
 end

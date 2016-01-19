@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campaign_id: 1
+  campaign_name: MyString
+  start_on: 2016-01-19
+  end_on: 2016-01-19
+  media_budget: 1.5
+  media_spent: 1.5
+  impressions: 1
+  clicks: 1
+  ctr: 1.5
+  conversions: 1
+  gross_revenues: 1.5
+
+two:
+  campaign_id: 1
+  campaign_name: MyString
+  start_on: 2016-01-19
+  end_on: 2016-01-19
+  media_budget: 1.5
+  media_spent: 1.5
+  impressions: 1
+  clicks: 1
+  ctr: 1.5
+  conversions: 1
+  gross_revenues: 1.5

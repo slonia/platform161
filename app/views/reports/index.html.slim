@@ -1,0 +1,8 @@
+h1 hello
+= link_to 'New', new_report_path, class: 'btn btn-success'
+
+table.table
+  - @reports.each do |report|
+    tr
+      td = report.campaign_id
+      td = link_to 'Download pdf', pdf_report_report_path(report)

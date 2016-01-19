@@ -22,6 +22,7 @@ module Platform161
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.autoload_paths << Rails.root.join('lib', 'platform_api')
+    config.autoload_paths << Rails.root.join('lib', 'pdf_generator')
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

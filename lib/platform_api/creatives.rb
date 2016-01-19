@@ -1,9 +1,6 @@
 class Creatives
-  def initialize
-    token = Auth.new.get_token
-    @auth = {
-      'PFM161-API-AccessToken' => token
-    }
+  def initialize(user)
+    @auth = user.auth_header
   end
 
   def index

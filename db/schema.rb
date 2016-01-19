@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118102400) do
+ActiveRecord::Schema.define(version: 20160119134553) do
+
+  create_table "reports", force: :cascade do |t|
+    t.integer  "campaign_id",    limit: 4,                 null: false
+    t.string   "campaign_name",  limit: 255
+    t.date     "start_on"
+    t.date     "end_on"
+    t.float    "media_budget",   limit: 24,  default: 0.0, null: false
+    t.float    "media_spent",    limit: 24,  default: 0.0, null: false
+    t.integer  "impressions",    limit: 4,   default: 0,   null: false
+    t.integer  "clicks",         limit: 4,   default: 0,   null: false
+    t.float    "ctr",            limit: 24,  default: 0.0, null: false
+    t.integer  "conversions",    limit: 4,   default: 0,   null: false
+    t.float    "gross_revenues", limit: 24,  default: 0.0, null: false
+    t.integer  "user_id",        limit: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -27,10 +46,12 @@ ActiveRecord::Schema.define(version: 20160118102400) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "nickname",               limit: 255, default: "", null: false
+    t.string   "api_token",              limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "reports", "users"
 end
