@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119134553) do
+ActiveRecord::Schema.define(version: 20160119203104) do
 
   create_table "reports", force: :cascade do |t|
     t.integer  "campaign_id",    limit: 4,                 null: false
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20160119134553) do
     t.integer  "user_id",        limit: 4
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.string   "pdf_report",     limit: 255
+    t.string   "comment",        limit: 255
   end
 
   add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree

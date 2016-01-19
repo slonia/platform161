@@ -1,8 +1,11 @@
 h1 hello
 = link_to 'New', new_report_path, class: 'btn btn-success'
 
-table.table
+table.table.table-bordered.table-striped
   - @reports.each do |report|
     tr
       td = report.campaign_id
-      td = link_to 'Download pdf', pdf_report_report_path(report)
+      td
+        .btn-group
+          = link_to 'Edit', edit_report_path(report), class: 'btn btn-warning'
+          = link_to 'Download pdf', report.pdf_report.url, class: 'btn btn-info'

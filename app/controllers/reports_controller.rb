@@ -1,13 +1,9 @@
 class ReportsController < ApplicationController
-  load_resource
+  before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @reports = Report.all
-  end
-
-  def pdf_report
-    @pdf = @report.generate_pdf
-    send_data(@pdf, filename: "report.pdf", type: "application/pdf")
   end
 
   def create
@@ -17,7 +13,15 @@ class ReportsController < ApplicationController
     redirect_to reports_path
   end
 
+  def update
+    if @report.update_attributes(report_params)
+      redirect_to reports_path
+    else
+      render 'edit'
+    end
+  end
+
   def report_params
-    params.require(:report).permit(:campaign_id)
+    params.require(:report).permit(:campaign_id, :comment)
   end
 end
