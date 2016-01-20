@@ -1,5 +1,6 @@
 class Api::ReportsController < ApplicationController
   before_filter :authenticate_user_from_token!
+  skip_before_action :verify_authenticity_token
   load_and_authorize_resource
 
   def index
@@ -14,7 +15,21 @@ class Api::ReportsController < ApplicationController
       methods: [:ecpm, :ecpc, :ecpa])
   end
 
+  def create
+    @report = Report.new(report_params)
+    @report.user = current_user
+    if @report.save && @report.success?
+      render json: { status: 'ok', message: 'Report created'}
+    else
+      render json: { status: 'error', message: 'Problems during report generation. Please, try again later'}
+    end
+  end
+
   private
+
+    def report_params
+      params.permit(:campaign_id)
+    end
 
     def authenticate_user_from_token!
       user_token = params[:auth_token]

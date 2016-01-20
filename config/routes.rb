@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :reports, except: [:destroy]
 
   namespace :api, defaults: { format: :json } do
-    resources :reports, only: [:index, :show]
+    resources :reports, only: [:index, :show, :create]
   end
 
   root 'reports#index'
