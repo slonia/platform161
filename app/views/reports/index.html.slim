@@ -1,11 +1,22 @@
-h1 hello
+h1 Welcome!
 = link_to 'New', new_report_path, class: 'btn btn-success'
 
-table.table.table-bordered.table-striped
+table.table.table-bordered
+  tr
+    th Campaign ID
+    th Start on
+    th End on
+    th Status
+    th Actions
   - @reports.each do |report|
-    tr
+    - status_class = report.success? ? 'success' : (report.error? ? 'danger' : nil)
+    tr class="#{status_class}"
       td = report.campaign_id
+      td = report.start_on
+      td = report.end_on
+      td = report.status
       td
         .btn-group
           = link_to 'Edit', edit_report_path(report), class: 'btn btn-warning'
-          = link_to 'Download pdf', report.pdf_report.url, class: 'btn btn-info'
+          - if (report.success?) && report.pdf_report
+            = link_to 'Download pdf', report.pdf_report.url, class: 'btn btn-info'

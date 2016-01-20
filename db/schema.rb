@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119203104) do
+ActiveRecord::Schema.define(version: 20160120084257) do
 
   create_table "reports", force: :cascade do |t|
     t.integer  "campaign_id",    limit: 4,                 null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160119203104) do
     t.datetime "updated_at",                               null: false
     t.string   "pdf_report",     limit: 255
     t.string   "comment",        limit: 255
+    t.integer  "status",         limit: 4,   default: 0,   null: false
   end
 
   add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160119203104) do
     t.datetime "updated_at",                                      null: false
     t.string   "nickname",               limit: 255, default: "", null: false
     t.string   "api_token",              limit: 255
+    t.string   "authentication_token",   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

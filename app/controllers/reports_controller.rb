@@ -10,6 +10,11 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.user = current_user
     @report.save
+    if @report.success?
+      flash[:notice] = 'Report generated'
+    else
+      flash[:error] = 'Problems during report generation. Please, try again later'
+    end
     redirect_to reports_path
   end
 
