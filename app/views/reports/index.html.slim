@@ -4,6 +4,7 @@ h1 Welcome!
 table.table.table-bordered
   tr
     th Campaign ID
+    td Created at
     th Start on
     th End on
     th Status
@@ -12,6 +13,7 @@ table.table.table-bordered
     - status_class = report.success? ? 'success' : (report.error? ? 'danger' : nil)
     tr class="#{status_class}"
       td = report.campaign_id
+      td = report.created_at
       td = report.start_on
       td = report.end_on
       td = report.status
